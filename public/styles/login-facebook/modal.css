@@ -1,0 +1,68 @@
+.modal {
+  position: absolute;
+  background-color: white;
+  margin: auto;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  padding: 0.8rem;
+  max-width: 28rem;
+  min-width: 28rem;
+  overflow: hidden;
+  max-height: max-content;
+  min-height: max-content;
+}
+
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+.input-gender {
+  display: flex;
+  border: 1px solid rgb(133, 132, 132);
+  height: 2.5rem;
+  align-items: center;
+  border-radius: 5px;
+  font-size: 0.99rem;
+  width: 50%;
+  padding-left: 0.8rem;
+  flex-direction: row;
+  margin: auto;
+  gap: 20px;
+}
+.input-gender.active {
+  border: 1px solid rgb(238, 0, 0);
+}
+
+.success {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+}
+
+.success img {
+  max-height: 14rem;
+  max-width: 14rem;
+}
+.success form button {
+  outline: none;
+  border: none;
+  background-color: green;
+  width: 5rem;
+  color: white;
+  font-weight: 500;
+  border-radius: 10px;
+}
+
+.success form button:hover {
+  cursor: pointer;
+  background-color: rgb(6, 92, 6);
+}
+
+#change-password-title {
+  margin: auto;
+  font-weight: 700;
+}

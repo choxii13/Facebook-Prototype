@@ -1,0 +1,154 @@
+.section-right {
+  position: fixed;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  width: 23rem;
+  height: 90vh;
+  overflow: scroll;
+}
+
+.section-right > p:nth-child(1),
+.switch-container ~ p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgb(133, 134, 135);
+  padding: 10px;
+}
+
+.section-right-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  height: 8rem;
+  padding: 10px;
+}
+.section-right-container img {
+  height: 100%;
+  width: 8rem;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.section-right-container:hover,
+.brave-plays-container:hover,
+.switch-container:hover,
+.birthday-container:hover,
+.contact-name-container:hover {
+  background-color: rgba(194, 187, 187, 0.2);
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.your-pages-and-profiles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.your-pages-and-profiles img {
+  height: 2rem;
+  width: 2rem;
+  object-fit: contain;
+  padding: 5px;
+  border-radius: 1.5rem;
+}
+
+.brave-plays-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 5px;
+  gap: 10px;
+}
+
+.brave-plays-container img {
+  height: 2.1rem;
+  width: 2.1rem;
+  border-radius: 1.5rem;
+  object-fit: contain;
+}
+
+.switch-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  align-items: center;
+  font-size: 0.7rem;
+  gap: 10px;
+  padding: 10px 0 10px 25px;
+}
+
+.switch-container img {
+  height: 1rem;
+  width: 1rem;
+  object-fit: contain;
+}
+
+.birthday-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px;
+}
+
+.birthday-container img {
+  height: 2.1rem;
+  width: 2.1rem;
+  border-radius: 1.5rem;
+  object-fit: contain;
+}
+
+.birthday-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px;
+}
+
+.contacts-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.contacts-contain {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.contacts-contain img {
+  height: 2.5rem;
+  width: 3rem;
+  object-fit: contain;
+  padding: 10px;
+  border-radius: 2.5rem;
+}
+
+.contacts-contain img:hover,
+.your-pages-and-profiles img:hover {
+  background-color: rgba(194, 187, 187, 0.2);
+  cursor: pointer;
+}
+
+.contact-name-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.contact-name-container img {
+  height: 2.1rem;
+  width: 2.1rem;
+  object-fit: contain;
+  border-radius: 20px;
+}

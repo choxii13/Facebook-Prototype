@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Facebook</title>
+    <link rel="stylesheet" href="/styles/login-facebook/index.css">
+    <link rel="stylesheet" href="/styles/login-facebook/form.css">
+    <link rel="stylesheet" href="/styles/login-facebook/formupper.css">
+    <link rel="stylesheet" href="/styles/login-facebook/modal.css">
+    <link rel="stylesheet" href="/styles/login-facebook/main.css">
+</head>
+
+<body>
+    <%- include('includes/login-facebook/dialog-sign-up.ejs') %>
+        <% if(success){ %>
+            <%- include('includes/login-facebook/dialog-modal-success.ejs') %>
+                <% }%>
+                    <%- include('includes/login-facebook/dialog-change-password.ejs') %>
+                        <section>
+                            <div class="facebook">
+                                <img src="/images/facebook.svg" />
+                                <p>Connect with friends and the world around you on Facebook.</p>
+                            </div>
+                            <div className="log-in">
+                                <form action="/login" method="POST" class="form-sign-in login-js">
+                                    <input type="email" placeholder="Email or Phone Number" id="login-email"
+                                        name="email" class="design" value="<%=loginFacebook.email%>" required />
+                                    <input type="password" placeholder="Password" id="user-password" name="password"
+                                        class="design" value="<%=loginFacebook.password%>" required />
+                                    <% if(loginFacebook.hasError){ %>
+                                        <p class="active" id="login-error">
+                                            <%=loginFacebook.message%>
+                                        </p>
+                                        <%} %>
+                                            <button>Login </button>
+                                            <span id="forgot-password">Forgot password?</span>
+                                            <hr />
+                                            <button type="button" id="create-account">Create new Account </button>
+                                </form>
+                            </div>
+                        </section>
+</body>
+<script src="/scripts/login-facebook/index.js"></script>
+
+</html>

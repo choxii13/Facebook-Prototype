@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Facebook</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAIN-FACEBOOK CSS PRACTICE</title>
+    <link rel="stylesheet" href="styles/main-facebook/posts.css">
+    <link rel="stylesheet" href="styles/main-facebook/creating-post.css">
+    <link rel="stylesheet" href="styles/main-facebook/left-section.css">
+    <link rel="stylesheet" href="styles/main-facebook/right-section.css">
+    <link rel="stylesheet" href="styles/main-facebook/posting.css">
+    <link rel="stylesheet" href="styles/main-facebook/header.css">
+    <link rel="stylesheet" href="styles/main-facebook/general.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="/styles/login-facebook/modal.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <%- include('includes/header.ejs' )%>
+
+        <main>
+            <%- include('includes/main-facebook/post-modal.ejs' )%>
+                <section>
+                    <%- include('includes/main-facebook/left-section.ejs') %>
+                        <%- include('includes/main-facebook/right-section.ejs') %>
+                </section>
+                <div class="posts-container">
+                    <%- include('includes/main-facebook/posting.ejs') %>
+                        <% for(const postDetail of postDetails) { %>
+                            <%- include('includes/main-facebook/posts.ejs', {postDetail}) %>
+                                <% } %>
+                                    <div>
+
+                                        <!-- <div class="center-bar">
+                                                <div class="set-of-pictures-hide">
+
+                                                    <button class="button-right js-button-right">
+                                                        <img src="styles/main-facebook/images/arrow-right.svg">
+                                                    </button>
+                                                    <button class="button-left js-button-left">
+                                                        <img src="styles/main-facebook/images/arrow-left.svg"> </button>
+                                                    <div class="set-of-pictures js-set-of-pictures">
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="side-bar-right-div">
+
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+            </div> -->
+
+
+        </main>
+
+</body>
+<script src="/scripts/mainfacebook.js"></script>
+
+</html>

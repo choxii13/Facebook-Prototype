@@ -1,0 +1,93 @@
+.creating-post {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 10px;
+}
+
+.creating-post > p:nth-child(1) {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 800;
+}
+.creating-post #pos-ab {
+  position: absolute;
+  right: 0;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.creating-post #pos-ab:hover {
+  cursor: pointer;
+}
+
+.creating-post-profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.creating-post-profile-name {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.creating-post-profile img {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 1.5rem;
+  object-fit: cover;
+}
+.creating-post-profile-friends {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 5px;
+  padding: 2px;
+}
+
+.creating-post-profile-friends > p {
+  font-size: 0.8rem;
+}
+
+#profile-friends {
+  height: 1rem;
+  width: 1rem;
+  object-fit: cover;
+}
+
+.creating-post input[type="text"] {
+  border: none;
+  outline: none;
+  height: 3rem;
+}
+
+.creating-post input[type="file"] {
+  content: "waa";
+}
+.creating-post button {
+  background: rgb(26, 147, 246);
+  height: 2rem;
+  border-radius: 5px;
+  font-weight: 500;
+  color: white;
+  border: none;
+}
+
+.creating-post button:hover {
+  cursor: pointer;
+}
+
+#image-preview {
+  display: none;
+}
+
+#image-preview {
+  margin: auto;
+  height: 15rem;
+  width: 100%;
+  object-fit: contain;
+}

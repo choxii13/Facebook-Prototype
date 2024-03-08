@@ -1,0 +1,13 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, Arial;
+  box-sizing: border-box;
+}
+
+body {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}

@@ -1,0 +1,236 @@
+.posts-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  width: 35rem;
+}
+
+.main-div-second-layer {
+  border: 1px solid rgba(34, 31, 31, 0.7);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  padding: 10px 10px;
+  gap: 10px;
+  border-radius: 10px;
+}
+
+.main-div-second-layer-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.main-div-second-layer-profile-a {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+}
+
+.main-div-second-layer-profile-aa {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-div-second-layer-profile-b {
+  display: flex;
+  flex-direction: column;
+}
+.name-josh {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.main-div-second-layer-profile-c {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+}
+
+.main-div-second-layer-profile-a img {
+  width: 2.5rem;
+  width: 2.5rem;
+  border-radius: 2.2rem;
+  object-fit: cover;
+}
+
+.main-div-second-layer-profile-c img {
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-top: 0.3rem;
+}
+.main-div-second-layer-profile-c p {
+  font-size: 1rem;
+}
+
+#post-image {
+  width: 100%;
+  height: 100%;
+  max-height: 30rem;
+  border-radius: 5px;
+  object-fit: contain;
+  border: 1px solid rgba(20, 18, 18, 0.7);
+}
+
+/* @media (min-width: 1370px) {
+  .main-div-second {
+    width: 700px;
+  }
+  .main-div-second-layer {
+    width: 660px;
+  }
+  .main-div-second-layer-picture {
+    height: 800px;
+    width: 660px;
+  }
+} */
+
+/* @media (max-width: 900px) {
+  .main-div-second {
+    width: 450px;
+  }
+  .main-div-second-layer {
+    width: 430px;
+  }
+  .main-div-second-layer-picture {
+    height: 430px;
+    width: 430px;
+  }
+} */
+
+hr {
+  border-color: rgba(50, 50, 51, 0.1);
+}
+.main-div-second-layer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1rem;
+  color: gray;
+}
+.main-div-second-layer-container img {
+  height: 1rem;
+  width: 1rem;
+  z-index: 100;
+}
+.main-div-second-layer-heart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+}
+.like-like {
+  left: 0.8rem;
+}
+
+.main-div-second-layer-comment-share {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+.main-div-second-layer-comment {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.main-div-second-layer-share {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.like-comment-share-main-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 1.5rem;
+}
+.like-comment-share-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  color: gray;
+  font-weight: 500;
+  width: 35rem;
+}
+
+.like-comment-share {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  width: 8rem;
+}
+
+.like-comment-share img {
+  width: 1.4rem;
+  height: 1.4rem;
+  object-fit: cover;
+}
+
+.like-comment-profile-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.up {
+  height: 1.2rem;
+  width: 1.2rem;
+  border-radius: 10px;
+}
+.down {
+  margin-top: 5px;
+  height: 1rem;
+  width: 1rem;
+}
+
+.like-comment-share:hover,
+.down:hover,
+.up:hover {
+  background-color: rgba(125, 118, 118, 0.3);
+  cursor: pointer;
+}
+
+.main-div-second-layer-heart:hover,
+.main-div-second-layer-comment:hover,
+.main-div-second-layer-share:hover,
+.name-josh:hover,
+.hours:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.profile-image:hover {
+  cursor: pointer;
+}
+.dot-dot-dot,
+.ekis-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.3rem;
+  width: 2.3rem;
+  padding: 10px;
+  border-radius: 20px;
+}
+.main-div-second-layer-profile-aa img {
+  width: 100%;
+  height: 100%;
+}
+.dot-dot-dot:hover,
+.ekis-close:hover {
+  background-color: rgba(216, 208, 208, 0.3);
+  cursor: pointer;
+}
