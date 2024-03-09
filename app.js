@@ -1,7 +1,6 @@
 const path = require("path");
 const express = require("express");
 const db = require("./data/database");
-// const demoRoutes = require("./routes/demo");
 const session = require("express-session");
 const mongodbStore = require("connect-mongodb-session");
 const MongoDbStore = mongodbStore(session);
@@ -17,7 +16,7 @@ app.set("views", path.join(__dirname, "views"));
 
 const sessionStore = new MongoDbStore({
   uri: "mongodb://localhost:27017",
-  databaseName: "auth-demo",
+  databaseName: "auth-facebook",
   collections: "sessions",
 });
 
@@ -38,22 +37,6 @@ app.use(login);
 app.use(changePassword);
 app.use(signUp);
 app.use(creatingPost);
-// app.use(async function (req, res, next) {
-//   const user = req.session.user;
-//   const isAuth = req.session.isAuthenticated;
-//   if (!user || !isAuth) {
-//     return next(); //
-//   }
-//   const userDoc = await db
-//     .getDb()
-//     .collection("users")
-//     .findOne({ email: user.email });
-//   console.log(userDoc);
-//   const isAdmin = userDoc.isAdmin;
-//   res.locals.isAuth = isAuth;
-//   res.locals.isAdmin = isAdmin; // same
-//   next();
-// });
 
 // app.use(async function (req, res, next) {
 //   const isAuth = req.session.isAuthenticated;
@@ -66,6 +49,10 @@ app.use(creatingPost);
 
 // app.use(function (error, req, res, next) {
 //   res.render("500");
+// });
+
+// app.use(function (req, res) {
+//   res.render("404");
 // });
 
 db.connectToDatabase().then(function () {
