@@ -25,6 +25,7 @@
                             </div>
                             <div className="log-in">
                                 <form action="/login" method="POST" class="form-sign-in login-js">
+                                    <input type="hidden" value="<%= csrfToken %>" name="_csrf">
                                     <input type="email" placeholder="Email or Phone Number" id="login-email"
                                         name="email" class="design" value="<%=loginFacebook.email%>" required />
                                     <input type="password" placeholder="Password" id="user-password" name="password"

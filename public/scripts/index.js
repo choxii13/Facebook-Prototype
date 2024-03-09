@@ -123,8 +123,10 @@ const loginInput = document.querySelectorAll(".login-js input");
 
 if (loginError) {
   for (let i in loginInput) {
+    loginInput[i].classList.add("active");
     loginInput[i].addEventListener("change", () => {
       loginError.textContent = "";
+      loginInput[i].classList.remove("active");
     });
   }
 }

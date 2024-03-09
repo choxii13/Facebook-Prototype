@@ -84,13 +84,14 @@ router.get("/facebook", async function (req, res) {
   req.session.changePasswordData = null;
   req.session.signUpData = null;
   req.session.success = null;
-
+  const csrfToken = req.csrfToken();
   res.render("login-facebook", {
     date: { days, months, years },
     inputData: signUpData,
     success: success,
     changePassword: changePasswordData,
     loginFacebook,
+    csrfToken,
   });
 });
 

@@ -4,6 +4,7 @@ const db = require("./data/database");
 const session = require("express-session");
 const mongodbStore = require("connect-mongodb-session");
 const MongoDbStore = mongodbStore(session);
+const csrf = require("csurf");
 const facebook = require("./routes/facebook");
 const creatingPost = require("./routes/creating-post");
 const login = require("./routes/login");
@@ -31,7 +32,7 @@ app.use(
 app.use(express.static("public"));
 app.use("/image_upload", express.static("image_upload"));
 app.use(express.urlencoded({ extended: false }));
-
+app.use(csrf());
 app.use(facebook);
 app.use(login);
 app.use(changePassword);
