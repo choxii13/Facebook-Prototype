@@ -122,7 +122,7 @@ const loginError = document.getElementById("login-error");
 const loginInput = document.querySelectorAll(".login-js input");
 
 if (loginError) {
-  for (let i = 0; i < loginInput.length; i++) {
+  for (let i in loginInput) {
     loginInput[i].addEventListener("change", () => {
       loginError.textContent = "";
     });
