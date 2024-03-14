@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Facebook</title>
     <link rel="stylesheet" href="/styles/login-facebook/index.css">
-    <link rel="stylesheet" href="/styles/login-facebook/form.css">
+    <link rel="stylesheet" href="/styles/login-facebook/error-form-design.css">
     <link rel="stylesheet" href="/styles/login-facebook/formupper.css">
     <link rel="stylesheet" href="/styles/login-facebook/modal.css">
     <link rel="stylesheet" href="/styles/login-facebook/main.css">
@@ -25,14 +25,13 @@
                             </div>
                             <div className="log-in">
                                 <form action="/login" method="POST" class="form-sign-in login-js">
-                                    <input type="hidden" value="<%= csrfToken %>" name="_csrf">
                                     <input type="email" placeholder="Email or Phone Number" id="login-email"
-                                        name="email" class="design" value="<%=loginFacebook.email%>" required />
+                                        name="email" class="design" value="<%=loginFacebook.email.value%>" required />
                                     <input type="password" placeholder="Password" id="user-password" name="password"
-                                        class="design" value="<%=loginFacebook.password%>" required />
+                                        class="design" value="<%=loginFacebook.password.value%>" required />
                                     <% if(loginFacebook.hasError){ %>
                                         <p class="active" id="login-error">
-                                            <%=loginFacebook.message%>
+                                            <%=loginFacebook.email.message %>
                                         </p>
                                         <%} %>
                                             <button>Login </button>

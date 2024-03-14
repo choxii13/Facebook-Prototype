@@ -5,11 +5,7 @@ const session = require("express-session");
 const mongodbStore = require("connect-mongodb-session");
 const MongoDbStore = mongodbStore(session);
 const csrf = require("csurf");
-const facebook = require("./routes/facebook");
-const creatingPost = require("./routes/creating-post");
-const login = require("./routes/login");
-const signUp = require("./routes/sign-up");
-const changePassword = require("./routes/change-password");
+const facebook = require("./routes/facebook-route");
 const app = express();
 
 app.set("view engine", "ejs");
@@ -32,12 +28,8 @@ app.use(
 app.use(express.static("public"));
 app.use("/image_upload", express.static("image_upload"));
 app.use(express.urlencoded({ extended: false }));
-app.use(csrf());
+// app.use(csrf());
 app.use(facebook);
-app.use(login);
-app.use(changePassword);
-app.use(signUp);
-app.use(creatingPost);
 
 // app.use(async function (req, res, next) {
 //   const isAuth = req.session.isAuthenticated;
