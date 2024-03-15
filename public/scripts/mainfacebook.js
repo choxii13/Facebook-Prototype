@@ -24,3 +24,24 @@ function showPreview() {
 }
 
 filePickerElement.addEventListener("change", showPreview);
+
+const openOptionElement = document.querySelector(
+  ".right-section-container:last-child img"
+);
+const optionElement = document.querySelector(
+  ".right-section-container:last-child div"
+);
+let open = false;
+function openOption() {
+  open = !open;
+  if (open) {
+    optionElement.style.display = "block";
+  } else {
+    optionElement.style.display = "none";
+  }
+}
+openOptionElement.addEventListener("click", openOption);
+
+const sectionLeftElement = document.querySelector(".section-left");
+const nameElement = document.querySelector(".section-left div:nth-child(1) p");
+nameElement.textContent = sectionLeftElement.dataset.name;

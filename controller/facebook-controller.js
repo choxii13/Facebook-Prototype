@@ -5,10 +5,12 @@ const { sessionDefaultValue } = require("../util/validation-session");
 async function getFacebook(req, res) {
   if (req.session.isAuthenticated) {
     const postDetails = await Facebook.postDetails();
+    const user = await Facebook.findUser({ email: req.session.user });
     postDetails.reverse();
     return res.render("main-facebook", {
       postDetails: postDetails,
       leftSection,
+      user: user,
     });
   }
 

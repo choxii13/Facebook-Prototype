@@ -3,7 +3,6 @@ const router = express.Router(); // express
 
 const multerConfig = require("../config/multer-config");
 const upload = multerConfig(); // multer
-
 const facebookController = require("../controller/facebook-controller");
 const postImageController = require("../controller/post-image-controller");
 const changePasswordController = require("../controller/change-password-controller");
@@ -24,5 +23,9 @@ router.post("/logout", function (req, res) {
   req.session.isAuthenticated = false;
   res.redirect("/facebook");
 });
+
+// router.get("*", function (req, res) {
+//   res.render("404");
+// });
 
 module.exports = router;

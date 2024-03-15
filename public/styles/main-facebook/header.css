@@ -153,3 +153,44 @@
   border-radius: 1.2rem;
   object-fit: cover;
 }
+
+.right-section-container:last-child {
+  position: relative;
+}
+
+.right-section-container:last-child div {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  z-index: 1000;
+}
+
+.right-section-container:last-child div ul {
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+  flex-direction: column;
+  width: 10rem;
+  list-style: none;
+  background-color: white;
+  box-shadow: 0px 0px 5px 0px black;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.right-section-container:last-child div ul button {
+  border: none;
+  background-color: rgb(174, 169, 169);
+  font-size: 0.8rem;
+  font-weight: 700;
+  width: 5rem;
+  letter-spacing: 2px;
+  padding: 5px;
+}
+
+.right-section-container:last-child div ul button:hover {
+  cursor: pointer;
+}
