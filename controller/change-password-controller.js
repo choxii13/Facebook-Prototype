@@ -1,41 +1,39 @@
 const Facebook = require("../model/facebook-model");
 const bcrypt = require("bcryptjs");
-const {
-  validationChangePassword,
-  passwordFormatFn,
-} = require("../util/validation");
 const { saveToSession } = require("../util/validation-session");
-const validationMessage = require("../util/validation-message");
+const { Validation, passwordFormatFn } = require("../util/validation-class");
 
 async function postChangePassword(req, res) {
-  const { email, password } = req.body;
-  const confirmPassword = req.body["confirm-password"];
+  const { email, password, confirmPassword } = req.body;
   const passwordFormat = passwordFormatFn(password);
 
   const existingUser = await Facebook.findUser({ email: email });
+  const value = new Validation(
+    null,
+    null,
+    password,
+    confirmPassword,
+    null,
+    existingUser,
+    email,
+    passwordFormat
+  );
+  value.changePassword();
 
-  if (
-    !validationChangePassword(
-      email,
-      password,
-      confirmPassword,
-      passwordFormat,
-      existingUser
-    )
-  ) {
+  if (Object.keys(value.message).length !== 0) {
     req.session.changePasswordData = {
       hasError: true,
       email: {
         value: email,
-        message: validationMessage.emailChangePassword(email, existingUser),
+        message: value.message.email,
       },
       password: {
         value: password,
-        message: validationMessage.password(password, passwordFormat),
+        message: value.message.password,
       },
       confirmPassword: {
         value: confirmPassword,
-        message: validationMessage.confirmPassword(password, confirmPassword),
+        message: value.message.confirmPassword,
       },
     };
     saveToSession(req, res, "/facebook");
@@ -43,7 +41,6 @@ async function postChangePassword(req, res) {
   }
 
   const hashedPassword = await bcrypt.hash(password, 12);
-
   await Facebook.updateData({ email: email }, { password: hashedPassword });
   req.session.success = "Change Password Successfully";
   saveToSession(req, res, "/facebook");

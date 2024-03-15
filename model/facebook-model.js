@@ -8,6 +8,7 @@ class Facebook {
       .toArray();
     return postDetails;
   }
+
   static async findUser(data) {
     const user = await db.getDb().collection("users").findOne(data);
     return user;

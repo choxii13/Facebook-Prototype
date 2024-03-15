@@ -1,32 +1,25 @@
+const session = require("express-session");
+const { sessionConfig, sessionDetails } = require("./config/session-config");
+const sessionStore = sessionConfig(session); // session
+
+const db = require("./data/database"); // database
+
+const csrf = require("csurf"); // csrf attacks
+
 const path = require("path");
 const express = require("express");
-const db = require("./data/database");
-const session = require("express-session");
-const mongodbStore = require("connect-mongodb-session");
-const MongoDbStore = mongodbStore(session);
-const csrf = require("csurf");
+const app = express(); // express
 const facebook = require("./routes/facebook-route");
-const app = express();
 
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "views")); // ejs
 
-const sessionStore = new MongoDbStore({
-  uri: "mongodb://localhost:27017",
-  databaseName: "auth-facebook",
-  collections: "sessions",
-});
+app.use(session(sessionDetails(sessionStore))); // session
 
-app.use(
-  session({
-    secret: "super-secret",
-    resave: false,
-    saveUninitialized: false,
-    store: sessionStore,
-  })
-);
-app.use(express.static("public"));
-app.use("/image_upload", express.static("image_upload"));
+app.use(express.static("public")); //static
+
+app.use("/image_upload", express.static("image_upload")); // file upload
+
 app.use(express.urlencoded({ extended: false }));
 // app.use(csrf());
 app.use(facebook);

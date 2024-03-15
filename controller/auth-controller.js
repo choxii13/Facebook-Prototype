@@ -1,24 +1,24 @@
 const bcrypt = require("bcryptjs");
 const Facebook = require("../model/facebook-model");
-const validationMessage = require("../util/validation-message");
 const { saveToSession } = require("../util/validation-session");
-const { validationSignUp, passwordFormatFn } = require("../util/validation");
+const { Validation, passwordFormatFn } = require("../util/validation-class");
 
 async function postLogin(req, res) {
   const { email, password } = req.body;
   const existingUser = await Facebook.findUser({ email: email });
-  let passwordIsMatch = false;
+  let passwordIsMatch;
 
   if (existingUser) {
     passwordIsMatch = await bcrypt.compare(password, existingUser.password);
   }
+  const error = Validation.logIn(passwordIsMatch, existingUser);
 
-  if (!existingUser || !passwordIsMatch) {
+  if (error) {
     req.session.loginFacebook = {
       hasError: true,
       email: {
         value: email,
-        message: validationMessage.emailLogin(existingUser, passwordIsMatch),
+        message: error,
       },
       password: {
         value: password,
@@ -28,69 +28,69 @@ async function postLogin(req, res) {
     saveToSession(req, res, "/facebook");
     return;
   }
-
   req.session.user = email; // need to be changed// need an id
   req.session.isAuthenticated = true;
   saveToSession(req, res, "/facebook");
 }
 
 async function postSignUp(req, res) {
-  const firstName = req.body["first-name"];
-  const lastName = req.body["last-name"];
-  const confirmPassword = req.body["confirm-password"];
-  const { day, month, year, email, password, gender } = req.body;
+  const { firstName, lastName, gender, email, password, confirmPassword } =
+    req.body;
   const passwordFormat = passwordFormatFn(password);
-
   const existingUser = await Facebook.findUser({ email: email });
 
-  const hashedPassword = await bcrypt.hash(password, 12);
-  const inputData = {
+  const value = new Validation(
     firstName,
     lastName,
+    password,
     confirmPassword,
-    day,
-    month,
-    year,
-    email,
-    password: hashedPassword,
     gender,
-  };
+    existingUser,
+    email,
+    passwordFormat
+  );
+  value.SignUp();
 
-  if (!validationSignUp(inputData, password, passwordFormat, existingUser)) {
+  if (Object.keys(value.message).length !== 0) {
     req.session.signUpData = {
       hasError: true,
       firstName: {
-        value: firstName,
-        message: validationMessage.firstName(firstName),
+        value: value.firstName,
+        message: value.message.firstName,
       },
       lastName: {
-        value: lastName,
-        message: validationMessage.lastName(lastName),
+        value: value.lastName,
+        message: value.message.lastName,
       },
       email: {
-        value: email,
-        message: validationMessage.emailSignUp(email, existingUser),
+        value: value.email,
+        message: value.message.email,
       },
       password: {
-        value: password,
-        message: validationMessage.password(password, passwordFormat),
+        value: value.password,
+        message: value.message.password,
       },
       confirmPassword: {
-        value: confirmPassword,
-        message: validationMessage.confirmPassword(password, confirmPassword),
+        value: value.confirmPassword,
+        message: value.message.confirmPassword,
       },
       gender: {
-        value: gender,
-        message: validationMessage.gender(gender),
+        value: value.gender,
+        message: value.message.gender,
       },
     };
     saveToSession(req, res, "/facebook");
     return;
+  } else {
+    const hashedPassword = await bcrypt.hash(password, 12);
+    const { confirmPassword, ...newReqBody } = req.body;
+    await Facebook.insertData("users", {
+      ...newReqBody,
+      password: hashedPassword,
+    });
+    req.session.success = "Sign Up Successfully";
+    saveToSession(req, res, "/facebook");
   }
-
-  await Facebook.insertData("users", inputData);
-  req.session.success = "Sign Up Successfully";
-  saveToSession(req, res, "/facebook");
 }
 
 module.exports = { postSignUp, postLogin };
