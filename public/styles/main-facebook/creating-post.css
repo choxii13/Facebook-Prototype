@@ -10,14 +10,14 @@
   font-size: 1rem;
   font-weight: 800;
 }
-.creating-post #pos-ab {
+.creating-post .pos-ab {
   position: absolute;
   right: 0;
   font-size: 1rem;
   font-weight: 800;
 }
 
-.creating-post #pos-ab:hover {
+.creating-post .pos-ab:hover {
   cursor: pointer;
 }
 
@@ -68,6 +68,7 @@
 .creating-post input[type="file"] {
   content: "waa";
 }
+
 .creating-post button {
   background: rgb(26, 147, 246);
   height: 2rem;

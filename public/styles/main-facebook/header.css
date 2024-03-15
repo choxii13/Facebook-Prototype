@@ -177,18 +177,17 @@
   box-shadow: 0px 0px 5px 0px black;
   border-radius: 5px;
   font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 1px;
 }
 
 .right-section-container:last-child div ul button {
   border: none;
-  background-color: rgb(174, 169, 169);
-  font-size: 0.8rem;
-  font-weight: 700;
-  width: 5rem;
+  background-color: rgb(167, 164, 164);
+  width: 100%;
+  padding: 10px;
+  align-items: center;
+  font-weight: 800;
+
   letter-spacing: 2px;
-  padding: 5px;
 }
 
 .right-section-container:last-child div ul button:hover {

@@ -1,4 +1,11 @@
-<div class="section-left" data-name="<%=user.firstName%> <%=user.lastName%>">
+<div class="section-left">
+    <div class="section-left-container">
+        <img src="<%=user.imagePath%>">
+        <p>
+            <%=user.firstName%>
+                <%=user.lastName%>
+        </p>
+    </div>
     <% for (const leftData of leftSection) { %>
         <div class="section-left-container">
             <img src="styles/main-facebook/<%=leftData.image%>">
@@ -17,6 +24,4 @@
                 <img src="styles/main-facebook/images/braveplays.jpg">
                 <p class="sidebar-left-p"> Brave Plays</p>
             </div>
-
-
 </div>

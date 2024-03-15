@@ -4,15 +4,21 @@ const router = express.Router(); // express
 const multerConfig = require("../config/multer-config");
 const upload = multerConfig(); // multer
 const facebookController = require("../controller/facebook-controller");
-const postImageController = require("../controller/post-image-controller");
+const imageController = require("../controller/post-image-controller");
 const changePasswordController = require("../controller/change-password-controller");
 const authController = require("../controller/auth-controller"); // routes controller
 
 router.get("/facebook", facebookController);
+
 router.post(
   "/facebook/creating-post",
   upload.single("image"),
-  postImageController
+  imageController.postImageController
+);
+router.post(
+  "/facebook/creating-profile-picture",
+  upload.single("image"),
+  imageController.postChangeProfilePicture
 );
 
 router.post("/change-password", changePasswordController);

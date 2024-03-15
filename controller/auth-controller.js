@@ -87,6 +87,7 @@ async function postSignUp(req, res) {
     await Facebook.insertData("users", {
       ...newReqBody,
       password: hashedPassword,
+      imagePath: "styles/main-facebook/images/no-profile.svg",
     });
     req.session.success = "Sign Up Successfully";
     saveToSession(req, res, "/facebook");

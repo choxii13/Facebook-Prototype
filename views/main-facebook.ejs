@@ -23,17 +23,18 @@
     <%- include('includes/header.ejs')%>
         <main>
             <%- include('includes/main-facebook/post-modal.ejs' )%>
-                <section>
-                    <%- include('includes/main-facebook/left-section.ejs') %>
-                        <%- include('includes/main-facebook/right-section.ejs') %>
-                </section>
-                <div class="posts-container">
-                    <%- include('includes/main-facebook/posting.ejs') %>
-                        <% for(const postDetail of postDetails) { %>
-                            <%- include('includes/main-facebook/posts.ejs', {postDetail}) %>
-                                <% } %>
-                                    <div>
-                                        <!-- <div class="center-bar">
+                <%- include('includes/main-facebook/change-profile.ejs' )%>
+                    <section>
+                        <%- include('includes/main-facebook/left-section.ejs') %>
+                            <%- include('includes/main-facebook/right-section.ejs') %>
+                    </section>
+                    <div class="posts-container">
+                        <%- include('includes/main-facebook/posting.ejs') %>
+                            <% for(const postDetail of postDetails) { %>
+                                <%- include('includes/main-facebook/posts.ejs', {postDetail}) %>
+                                    <% } %>
+                                        <div>
+                                            <!-- <div class="center-bar">
                                                 <div class="set-of-pictures-hide">
 
                                                     <button class="button-right js-button-right">

@@ -2,10 +2,10 @@
     <form action="/facebook/creating-post" method="POST" enctype="multipart/form-data">
         <div class="creating-post">
             <p> Create Post </p>
-            <p id="pos-ab"> X </p>
+            <p class="pos-ab" id="close-post"> X </p>
             <hr>
             <div class="creating-post-profile">
-                <img src="/styles/main-facebook/images/Aamon.jpg">
+                <img src="<%=user.imagePath%>">
                 <div class="creating-post-profile-name">
                     <p>
                         <%=user.firstName%>

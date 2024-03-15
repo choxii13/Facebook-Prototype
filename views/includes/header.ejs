@@ -41,15 +41,15 @@
 
         </div>
         <div class="right-section-container">
-            <img src="styles/main-facebook/images/joshua.jpg" class="img-joshua">
+            <img src="<%=user.imagePath%>" class="img-joshua">
             <p>Profile</p>
             <div class="options">
                 <ul>
                     <li>
                         <form action="/logout" method="POST"> <button> Logout </button></form>
                     </li>
-                    <li> ChangeName</li>
-                    <li> Change Profile Picture</li>
+                    <li> <button> Change Name </button></li>
+                    <li> <button id="open-change-dp"> Change Profile Picture </button></li>
                 </ul>
             </div>
         </div>

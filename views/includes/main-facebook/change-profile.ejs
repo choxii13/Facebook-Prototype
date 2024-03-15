@@ -1,0 +1,25 @@
+<dialog id="change-profile" class="modal" close>
+    <form action="/facebook/creating-profile-picture" method="POST" enctype="multipart/form-data">
+        <div class="creating-post">
+            <p> Change Profile Picture </p>
+            <p class="pos-ab" id="close-change-dp"> X </p>
+            <hr>
+            <div class="creating-post-profile">
+                <img src="<%=user.imagePath%>">
+                <div class="creating-post-profile-name">
+                    <p>
+                        <%=user.firstName%>
+                            <%=user.lastName%>
+                    </p>
+                    <div class="creating-post-profile-friends">
+                        <img id="profile-friends" src="/styles/main-facebook/images/friendss.png">
+                        <p> Friends</p>
+                    </div>
+                </div>
+            </div>
+            <img src="" id="image-preview">
+            <input type="file" id="image" name="image" accept="image/png, image/jpeg, image/jpg, image/svg" required>
+            <button> Change Profile Picture </button>
+        </div>
+    </form>
+</dialog>

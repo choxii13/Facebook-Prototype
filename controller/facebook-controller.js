@@ -7,6 +7,7 @@ async function getFacebook(req, res) {
     const postDetails = await Facebook.postDetails();
     const user = await Facebook.findUser({ email: req.session.user });
     postDetails.reverse();
+    console.log(user);
     return res.render("main-facebook", {
       postDetails: postDetails,
       leftSection,

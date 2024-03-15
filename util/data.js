@@ -23,10 +23,6 @@ const months = [
 
 const leftSection = [
   {
-    image: "images/joshua.jpg",
-    name: "Joshua ZXC",
-  },
-  {
     image: "images/friends.png",
     name: "Friends",
   },
