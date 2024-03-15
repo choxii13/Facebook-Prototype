@@ -33,14 +33,6 @@ app.use(facebook);
 //   next();
 // });
 
-// app.use(function (error, req, res, next) {
-//   res.render("500");
-// });
-
-// app.use(function (req, res) {
-//   res.render("404");
-// });
-
 db.connectToDatabase().then(function () {
   app.listen(3000);
 });

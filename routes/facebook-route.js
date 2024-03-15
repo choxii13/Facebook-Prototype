@@ -20,11 +20,16 @@ router.post("/sign-up", authController.postSignUp);
 router.post("/login", authController.postLogin);
 
 router.post("/logout", function (req, res) {
+  req.session.user = null;
   req.session.isAuthenticated = false;
-  res.redirect("/facebook");
+  res.redirect("/facebook"); // for extra purpose
 });
 
-// router.get("*", function (req, res) {
+// router.use(function (error, req, res, next) {
+//   res.render("500");
+// });
+
+// router.use(function (req, res) {
 //   res.render("404");
 // });
 
