@@ -2,11 +2,11 @@
   display: flex;
   flex-direction: column;
   background-color: white;
-  width: 100%;
+  width: 90%;
   padding: 10px;
   gap: 10px;
   border-radius: 10px;
-  border: 1px solid rgba(34, 31, 31, 0.7);
+  border: 1px solid rgba(121, 115, 115, 0.7);
 }
 
 .main-div-first-layer-profile {

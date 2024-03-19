@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="styles/main-facebook/left-section.css">
     <link rel="stylesheet" href="styles/main-facebook/right-section.css">
     <link rel="stylesheet" href="styles/main-facebook/posting.css">
+    <link rel="stylesheet" href="styles/main-facebook/story.css">
     <link rel="stylesheet" href="styles/main-facebook/header.css">
     <link rel="stylesheet" href="styles/main-facebook/general.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,20 +22,21 @@
 
 <body>
     <%- include('includes/header.ejs')%>
-        <main>
-            <%- include('includes/main-facebook/post-modal.ejs' )%>
-                <%- include('includes/main-facebook/change-profile.ejs' )%>
-                    <section>
-                        <%- include('includes/main-facebook/left-section.ejs') %>
-                            <%- include('includes/main-facebook/right-section.ejs') %>
-                    </section>
-                    <div class="posts-container">
-                        <%- include('includes/main-facebook/posting.ejs') %>
-                            <% for(const postDetail of postDetails) { %>
-                                <%- include('includes/main-facebook/posts.ejs', {postDetail}) %>
-                                    <% } %>
-                                        <div>
-                                            <!-- <div class="center-bar">
+        <%- include('includes/main-facebook/post-modal.ejs' )%>
+            <%- include('includes/main-facebook/change-profile.ejs' )%>
+                <main>
+                    <%- include('includes/main-facebook/left-section.ejs') %>
+                        <div class="posts-container">
+                            <%- include('includes/main-facebook/story.ejs') %>
+                                <%- include('includes/main-facebook/posting.ejs') %>
+                                    <% for(const postDetail of postDetails) { %>
+                                        <%- include('includes/main-facebook/posts.ejs', {postDetail}) %>
+                                            <% } %>
+                        </div>
+                        <%- include('includes/main-facebook/right-section.ejs') %>
+                </main>
+
+                <!-- <div class="center-bar">
                                                 <div class="set-of-pictures-hide">
 
                                                     <button class="button-right js-button-right">
@@ -53,7 +55,6 @@
                                 </div>
 
             </div> -->
-        </main>
 
 </body>
 <script src="/scripts/mainfacebook.js"></script>

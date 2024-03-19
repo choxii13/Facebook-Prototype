@@ -1,21 +1,21 @@
 .posts-container {
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
-  width: 35rem;
+  width: 34rem;
 }
 
 .main-div-second-layer {
-  border: 1px solid rgba(34, 31, 31, 0.7);
   background-color: white;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 90%;
   justify-content: center;
   padding: 10px 10px;
   gap: 10px;
   border-radius: 10px;
+  border: 1px solid rgba(121, 115, 115, 0.7);
 }
 
 .main-div-second-layer-profile {

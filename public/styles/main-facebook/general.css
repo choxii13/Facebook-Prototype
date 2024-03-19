@@ -7,7 +7,74 @@
 
 body {
   margin-top: 5rem;
+  background-color: rgba(171, 173, 175, 0.1);
+}
+main {
   display: flex;
   justify-content: center;
-  height: 100vh;
+  flex-direction: row;
+  gap: 40px;
+}
+
+@media (min-width: 2000px) {
+  main {
+    flex-direction: row;
+    gap: 20px;
+  }
+  .section-left,
+  .section-right {
+    position: relative;
+  }
+  .main-div-second-layer,
+  .main-div-first-layer {
+    width: 100%;
+  }
+}
+
+/*  main browser */
+@media (max-width: 1200px) {
+  main {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+  .posts-container {
+    margin-left: 4rem;
+  }
+  .section-left {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .section-right {
+    width: 15rem;
+  }
+}
+
+/* tablet?? */
+@media (max-width: 900px) {
+  main {
+    align-items: center;
+    justify-content: center;
+  }
+  .posts-container {
+    margin-left: 0;
+  }
+  .section-left,
+  .section-right,
+  .middle-section {
+    display: none;
+  }
+}
+/* android device */
+@media (max-width: 600px) {
+  main {
+    align-items: center;
+    justify-content: center;
+  }
+  .section-left,
+  .section-right {
+    display: none;
+  }
 }

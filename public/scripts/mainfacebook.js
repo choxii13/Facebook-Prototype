@@ -54,3 +54,52 @@ function openOption() {
   }
 }
 openOptionElement.addEventListener("click", openOption);
+
+// story
+const imageStory = document.querySelectorAll(".story ul li");
+const buttonLeftElement = document.querySelector(".btn-left");
+const buttonRightElement = document.querySelector(".btn-right");
+const buttonElement = document.querySelectorAll(".story button");
+
+let move = 0;
+let removeDisplay = 0;
+let numberOfSlides = imageStory.length;
+
+for (let i = 0; i < buttonElement.length; i++) {
+  buttonElement[i].addEventListener("click", function () {
+    const selectedButton = buttonElement[i].classList;
+
+    // button left
+    if (selectedButton[0] === "btn-left") {
+      removeDisplay -= 1;
+      move += 200;
+      imageStory[0].style.marginLeft = `${move}` + "px";
+    }
+    //  button right
+    if (selectedButton[0] === "btn-right") {
+      removeDisplay += 1;
+      move -= 200;
+      imageStory[0].style.marginLeft = `${move}` + "px";
+    }
+
+    // button left
+    if (removeDisplay <= 0) {
+      buttonLeftElement.style.display = "none";
+    } else {
+      buttonLeftElement.style.display = "flex";
+    }
+
+    // button right
+    if (removeDisplay >= numberOfSlides - 4) {
+      console.log(removeDisplay);
+      buttonRightElement.style.display = "none";
+    } else {
+      buttonRightElement.style.display = "flex";
+    }
+  });
+}
+
+const removeElement = document.querySelector(
+  ".story ul li:nth-child(1) img:nth-child(1)"
+);
+console.log((removeElement.style.display = "none"));

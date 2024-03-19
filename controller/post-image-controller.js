@@ -26,7 +26,7 @@ async function postChangeProfilePicture(req, res) {
     }
   );
 
-  if ("styles/main-facebook/images/no-profile.svg" !== currentUser.imagePath) {
+  if ("styles/main-facebook/images/no-profile.png" !== currentUser.imagePath) {
     await fs.remove(currentUser.imagePath);
   }
   res.redirect("/facebook");
