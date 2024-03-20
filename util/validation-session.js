@@ -37,6 +37,7 @@ function saveToSession(req, res, redirectTo) {
   req.session.save(function () {
     return res.redirect(redirectTo);
   });
+  return;
 }
 
 module.exports = { sessionDefaultValue, saveToSession };

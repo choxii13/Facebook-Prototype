@@ -1,7 +1,7 @@
 <div class="main-div-first-layer">
     <div class="main-div-first-layer-profile">
-        <img src="<%=user.imagePath%>">
-        <p> What's on your mind, <%= user.firstName %>
+        <img src="<%=locals.curUser.imagePath%>">
+        <p> What's on your mind, <%= locals.curUser.firstName %>
         </p>
     </div>
     <hr>

@@ -1,9 +1,9 @@
 <div class="section-left">
     <div class="section-left-container">
-        <img src="<%=user.imagePath%>">
+        <img src="<%=locals.curUser.imagePath%>">
         <p>
-            <%=user.firstName%>
-                <%=user.lastName%>
+            <%=locals.curUser.firstName%>
+                <%=locals.curUser.lastName%>
         </p>
     </div>
     <% for (const leftData of leftSection) { %>

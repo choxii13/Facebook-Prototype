@@ -1,0 +1,31 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Facebook</title>
+
+<!-- for login-facebook css -->
+<% if(!locals.isAuth) { %>
+    <link rel="stylesheet" href="/styles/login-facebook/index.css">
+    <link rel="stylesheet" href="/styles/login-facebook/error-form-design.css">
+    <link rel="stylesheet" href="/styles/login-facebook/formupper.css">
+    <link rel="stylesheet" href="/styles/login-facebook/modal.css">
+    <link rel="stylesheet" href="/styles/login-facebook/main.css">
+    <script src="/scripts/index.js" defer></script>
+    <% } %>
+
+
+        <% if (locals.isAuth) { %>
+            <!-- for main-facebook css-->
+            <link rel="stylesheet" href="styles/main-facebook/posts.css">
+            <link rel="stylesheet" href="styles/main-facebook/creating-post.css">
+            <link rel="stylesheet" href="styles/main-facebook/left-section.css">
+            <link rel="stylesheet" href="styles/main-facebook/right-section.css">
+            <link rel="stylesheet" href="styles/main-facebook/posting.css">
+            <link rel="stylesheet" href="styles/main-facebook/story.css">
+            <link rel="stylesheet" href="styles/main-facebook/header.css">
+            <link rel="stylesheet" href="styles/main-facebook/general.css">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="stylesheet" href="/styles/login-facebook/modal.css">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+            <script src="scripts/mainfacebook.js" defer></script>
+            <% } %>

@@ -5,11 +5,11 @@
             <p class="pos-ab" id="close-post"> X </p>
             <hr>
             <div class="creating-post-profile">
-                <img src="<%=user.imagePath%>">
+                <img src="<%=locals.curUser.imagePath%>">
                 <div class="creating-post-profile-name">
                     <p>
-                        <%=user.firstName%>
-                            <%=user.lastName%>
+                        <%=locals.curUser.firstName%>
+                            <%=locals.curUser.lastName%>
                     </p>
                     <div class="creating-post-profile-friends">
                         <img id="profile-friends" src="/styles/main-facebook/images/friendss.png">

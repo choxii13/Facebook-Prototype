@@ -24,15 +24,6 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(csrf());
 app.use(facebook);
 
-// app.use(async function (req, res, next) {
-//   const isAuth = req.session.isAuthenticated;
-//   if (!isAuth) {
-//     next();
-//   }
-//   res.locals.isAuth = isAuth;
-//   next();
-// });
-
 db.connectToDatabase().then(function () {
   app.listen(3000);
 });

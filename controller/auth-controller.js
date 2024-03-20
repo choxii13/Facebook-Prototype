@@ -26,7 +26,6 @@ async function postLogin(req, res) {
       },
     };
     saveToSession(req, res, "/facebook");
-    return;
   }
   req.session.user = email; // need to be changed// need an id
   req.session.isAuthenticated = true;
@@ -94,4 +93,9 @@ async function postSignUp(req, res) {
   }
 }
 
-module.exports = { postSignUp, postLogin };
+function postLogOut(req, res) {
+  req.session.user = null;
+  req.session.isAuthenticated = false;
+  res.redirect("/facebook");
+}
+module.exports = { postSignUp, postLogin, postLogOut };
