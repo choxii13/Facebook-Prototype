@@ -4,21 +4,45 @@ section {
   justify-content: center;
   flex-direction: row;
   margin-top: 8rem;
-  gap: 100px;
+  gap: 10rem;
 }
+
+@media (max-width: 1000px) {
+  section {
+    margin-top: 0;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .facebook {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .facebook img:nth-of-type(1) {
+    margin-left: 0;
+  }
+  .modal {
+    overflow: scroll;
+  }
+}
+
 .facebook {
+  display: flex;
+  flex-direction: column;
+  width: 26rem;
+}
+
+.facebook p {
   font-size: 1.5rem;
-  width: 27rem;
-  color: rgb(5, 5, 5);
   font-weight: 100;
   line-height: 1.5rem;
+  color: rgb(5, 5, 5);
 }
 
 .facebook img {
-  width: 20rem;
+  margin-left: -2rem;
   object-fit: cover;
-  height: 100%;
-  object-position: -2rem;
+  width: 20rem;
 }
 
 .form-sign-in {

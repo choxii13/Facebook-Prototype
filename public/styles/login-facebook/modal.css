@@ -1,16 +1,15 @@
 .modal {
   position: absolute;
   background-color: white;
-  margin: auto;
   border-radius: 6px;
   border: none;
+  margin: auto;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   padding: 0.8rem;
   max-width: 28rem;
   min-width: 28rem;
   overflow: visible;
-  max-height: max-content;
-  min-height: max-content;
+  max-height: 33rem;
 }
 
 .modal::backdrop {

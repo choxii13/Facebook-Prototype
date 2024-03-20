@@ -1,92 +1,94 @@
-<dialog id="modal-sign-up" class="modal" close>
-    <div class="form-upper">
-        <div class="form-upper-signup">
-            <h1> Sign Up</h1>
-            <span class="small">it&apos;s quick and Easy </span>
-        </div>
-        <button id="close-dialog"> x </button>
-    </div>
-    <hr />
-    <form action="/sign-up" method="POST" class="form-sign-up">
-        <div class="form-content form-content-sign-up">
-            <div class="form-content-row">
-
-                <input type='text' id="first-name" name="firstName" placeholder="First Name"
-                    value="<%=inputData.firstName.value%>" data-error="<%=inputData.firstName.message %>">
-                <input type='text' id="last-name" name="lastName" placeholder="Last Name"
-                    value="<%=inputData.lastName.value%>" data-error="<%=inputData.lastName.message%>">
+<div class="modal-controller">
+    <dialog id="modal-sign-up" class="modal" close>
+        <div class="form-upper">
+            <div class="form-upper-signup">
+                <h1> Sign Up</h1>
+                <span class="small">it&apos;s quick and Easy </span>
             </div>
-            <input type='email' id="sign-up-email" name="email" placeholder="Email"
-                data-error="<%=inputData.email.message%>" value="<%=inputData.email.value%>">
-            <input type='password' id="sign-up-password" name="password" placeholder="Password"
-                value="<%=inputData.password.value%>" data-error="<%=inputData.password.message %>">
-            <input type='password' id="confirm-password" name="confirmPassword" placeholder="Confirm-password"
-                value="<%=inputData.confirmPassword.value%>" data-error="<%=inputData.confirmPassword.message%>">
-
-            <% if(inputData.hasError) { %>
-                <p id="error-signup"></p>
-                <% } %>
-
+            <button id="close-dialog"> x </button>
         </div>
-        <div class="birthday-gender">
-            <span class="small"> Birthday</span>
-            <div class="form-content-row">
-                <select name="month" id="month">
-                    <% for (const month of date.months) { %>
-                        <option value="<%=month%>">
-                            <%=month%>
-                        </option>
-                        <%} %>
-                </select>
-                <select name="day" id="day">
-                    <% for (const day of date.days) { %>
-                        <option value="<%=day%>">
-                            <%=day%>
-                        </option>
-                        <%} %>
-                </select>
-                <select name="year" id="year">
-                    <% for (const year of date.years) { %>
-                        <option value="<%=year%>">
-                            <%=year%>
-                        </option>
-                        <%} %>
-                </select>
+        <hr />
+        <form action="/sign-up" method="POST" class="form-sign-up">
+            <div class="form-content form-content-sign-up">
+                <div class="form-content-row">
+
+                    <input type='text' id="first-name" name="firstName" placeholder="First Name"
+                        value="<%=inputData.firstName.value%>" data-error="<%=inputData.firstName.message %>">
+                    <input type='text' id="last-name" name="lastName" placeholder="Last Name"
+                        value="<%=inputData.lastName.value%>" data-error="<%=inputData.lastName.message%>">
+                </div>
+                <input type='email' id="sign-up-email" name="email" placeholder="Email"
+                    data-error="<%=inputData.email.message%>" value="<%=inputData.email.value%>">
+                <input type='password' id="sign-up-password" name="password" placeholder="Password"
+                    value="<%=inputData.password.value%>" data-error="<%=inputData.password.message %>">
+                <input type='password' id="confirm-password" name="confirmPassword" placeholder="Confirm-password"
+                    value="<%=inputData.confirmPassword.value%>" data-error="<%=inputData.confirmPassword.message%>">
+
+                <% if(inputData.hasError) { %>
+                    <p id="error-signup"></p>
+                    <% } %>
+
             </div>
-        </div>
-        <div class="birthday">
-            <span class="small"> Gender</span>
-            <div class="form-content-row" data-error="<%=inputData.gender.message%>"
-                data-value="<%=inputData.gender.value%>">
-                <div class="input-gender">
-                    <label for="female"> Female</label>
-                    <input type="radio" id="female" name="gender" value="female">
-                </div>
-                <div class="input-gender">
-                    <label for="male"> Male</label>
-                    <input type="radio" id="male" name="gender" value="male">
-                </div>
-                <div class="input-gender">
-                    <label for="optional"> Optional</label>
-                    <input type="radio" id="optional" name="gender" value="optional">
+            <div class="birthday-gender">
+                <span class="small"> Birthday</span>
+                <div class="form-content-row">
+                    <select name="month" id="month">
+                        <% for (const month of date.months) { %>
+                            <option value="<%=month%>">
+                                <%=month%>
+                            </option>
+                            <%} %>
+                    </select>
+                    <select name="day" id="day">
+                        <% for (const day of date.days) { %>
+                            <option value="<%=day%>">
+                                <%=day%>
+                            </option>
+                            <%} %>
+                    </select>
+                    <select name="year" id="year">
+                        <% for (const year of date.years) { %>
+                            <option value="<%=year%>">
+                                <%=year%>
+                            </option>
+                            <%} %>
+                    </select>
                 </div>
             </div>
-        </div>
-        <div class="form-lower">
-            <span>
-                People who use our service may have uploaded your contact information
-                to Facebook. <span id="highlight">Learn more.</span>
-            </span>
-        </div>
-        <div class="form-lower">
-            <span>
-                By clicking Sign Up, you agree to our
-                <span id="highlight">Terms, </span>
-                <span id="highlight">Privacy Policy </span> and
-                <span id="highlight"> Cookies Policy</span>. You may receive SMS
-                Notifications from us and can opt out any time.
-            </span>
-        </div>
-        <button class="btn design">Sign Up</button>
-    </form>
-</dialog>
+            <div class="birthday">
+                <span class="small"> Gender</span>
+                <div class="form-content-row" data-error="<%=inputData.gender.message%>"
+                    data-value="<%=inputData.gender.value%>">
+                    <div class="input-gender">
+                        <label for="female"> Female</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                    </div>
+                    <div class="input-gender">
+                        <label for="male"> Male</label>
+                        <input type="radio" id="male" name="gender" value="male">
+                    </div>
+                    <div class="input-gender">
+                        <label for="optional"> Optional</label>
+                        <input type="radio" id="optional" name="gender" value="optional">
+                    </div>
+                </div>
+            </div>
+            <div class="form-lower">
+                <span>
+                    People who use our service may have uploaded your contact information
+                    to Facebook. <span id="highlight">Learn more.</span>
+                </span>
+            </div>
+            <div class="form-lower">
+                <span>
+                    By clicking Sign Up, you agree to our
+                    <span id="highlight">Terms, </span>
+                    <span id="highlight">Privacy Policy </span> and
+                    <span id="highlight"> Cookies Policy</span>. You may receive SMS
+                    Notifications from us and can opt out any time.
+                </span>
+            </div>
+            <button class="btn design">Sign Up</button>
+        </form>
+    </dialog>
+</div>

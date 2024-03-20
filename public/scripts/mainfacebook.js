@@ -44,6 +44,7 @@ const optionElement = document.querySelector(
   ".right-section-container:last-child div"
 );
 
+// open option
 let open = false;
 function openOption() {
   open = !open;
@@ -99,6 +100,7 @@ for (let i = 0; i < buttonElement.length; i++) {
   });
 }
 
+// create story
 const removeElement = document.querySelector(
   ".story ul li:nth-child(1) img:nth-child(1)"
 );
