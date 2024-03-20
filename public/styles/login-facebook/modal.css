@@ -9,7 +9,7 @@
   max-width: 28rem;
   min-width: 28rem;
   overflow: visible;
-  max-height: 33rem;
+  max-height: max-content;
 }
 
 .modal::backdrop {
