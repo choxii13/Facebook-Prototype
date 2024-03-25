@@ -5,7 +5,7 @@ const sessionStore = sessionConfig(session); // session
 const db = require("./data/database"); // database
 
 const csrf = require("csurf"); // csrf attacks
-
+const redirect = require("./routes/redirect");
 const path = require("path");
 const express = require("express");
 const app = express(); // express
@@ -23,7 +23,7 @@ app.use("/image_upload", express.static("image_upload")); // file upload
 app.use(express.urlencoded({ extended: false }));
 // app.use(csrf());
 app.use("/facebook", facebook);
-
+app.use(redirect);
 db.connectToDatabase().then(function () {
   app.listen(3000);
 });
