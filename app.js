@@ -22,7 +22,7 @@ app.use("/image_upload", express.static("image_upload")); // file upload
 
 app.use(express.urlencoded({ extended: false }));
 // app.use(csrf());
-app.use(facebook);
+app.use("/facebook", facebook);
 
 db.connectToDatabase().then(function () {
   app.listen(3000);

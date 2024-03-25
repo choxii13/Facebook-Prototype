@@ -12,28 +12,26 @@ const {
   error404,
 } = require("../middleware/middleware-routes");
 
-router.post("/facebook/sign-up", authController.postSignUp);
-router.post("/facebook/login", authController.postLogin);
-router.post("/facebook/logout", authController.postLogOut);
+router.post("/sign-up", authController.postSignUp);
+router.post("/login", authController.postLogin);
+router.post("/logout", authController.postLogOut);
+router.post("/change-password", changePasswordController);
 
 router.use(guardAuthRoutes);
-
+router.get("/", facebookController);
 // facebook Controller
-router.get("/facebook", facebookController);
-
-router.post("/change-password", changePasswordController);
 
 // auth -controller
 
 // posting and change picture
 router.post(
-  "/facebook/creating-post",
+  "/creating-post",
   upload.single("image"),
   imageController.postImageController
 );
 
 router.post(
-  "/facebook/creating-profile-picture",
+  "/creating-profile-picture",
   upload.single("image"),
   imageController.postChangeProfilePicture
 );
