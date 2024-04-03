@@ -1,4 +1,5 @@
 const db = require("../data/database");
+
 class Facebook {
   static async postDetails() {
     const postDetails = await db

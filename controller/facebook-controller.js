@@ -37,10 +37,6 @@ async function getFacebook(req, res) {
     changePassword: changePasswordData,
     loginFacebook,
   });
-
-  // csrfToken,
-
-  //   const csrfToken = req.csrfToken();
 }
 
 module.exports = getFacebook;

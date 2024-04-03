@@ -10,6 +10,7 @@ const path = require("path");
 const express = require("express");
 const app = express(); // express
 const facebook = require("./routes/facebook-route");
+const { error500, error404 } = require("./middleware/middleware-routes");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views")); // ejs
@@ -24,6 +25,9 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(csrf());
 app.use("/facebook", facebook);
 app.use(redirect);
+
+app.use(error500);
+app.use(error404);
 db.connectToDatabase().then(function () {
   app.listen(3000);
 });

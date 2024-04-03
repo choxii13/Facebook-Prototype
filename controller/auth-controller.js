@@ -11,6 +11,7 @@ async function postLogin(req, res) {
   if (existingUser) {
     passwordIsMatch = await bcrypt.compare(password, existingUser.password);
   }
+
   const error = Validation.logIn(passwordIsMatch, existingUser);
 
   if (error) {
@@ -26,6 +27,7 @@ async function postLogin(req, res) {
       },
     };
     saveToSession(req, res, "/facebook");
+    return;
   }
   req.session.user = email; // need to be changed// need an id
   req.session.isAuthenticated = true;
