@@ -43,7 +43,7 @@ class User {
       .collection("users")
       .updateOne(
         { _id: existingUser._id },
-        { $set: { ...existingUser, password: this.password } }
+        { $set: { ...existingUser, password: hashedPassword } }
       );
   }
 

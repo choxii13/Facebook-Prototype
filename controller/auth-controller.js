@@ -74,7 +74,7 @@ async function changePassword(req, res) {
 
   await user.save();
   req.session.success = "Change Password Successfully";
-  sessionAuth.sessionAuth(req, res, "/facebook");
+  saveToSession(req, res, "/facebook");
 }
 
 async function login(req, res) {
