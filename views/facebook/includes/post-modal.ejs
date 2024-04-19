@@ -1,0 +1,25 @@
+<dialog id="post-modal" class="modal" close>
+  <form action="/facebook/creating-post?_csrf=<%=locals.csrfToken%>" method="POST" enctype="multipart/form-data">
+    <div class="creating-post">
+      <p> Create Post </p>
+      <p class="pos-ab" id="close-post"> X </p>
+      <hr>
+      <div class="creating-post-profile">
+        <img src="<%=userProfile.userProfile%>">
+        <div class="creating-post-profile-name">
+          <p>
+            <%=userProfile.firstName%> <%=userProfile.lastName%>
+          </p>
+          <div class="creating-post-profile-friends">
+            <img id="profile-friends" src="/styles/main-facebook/images/friendss.png">
+            <p> Friends</p>
+          </div>
+        </div>
+      </div>
+      <input type="text" id="post-detail" placeholder="What's on your mind" name="post-detail" required>
+      <img src="" id="image-preview">
+      <input type="file" id="image" name="image" accept="image/png, image/jpeg, image/jpg, image/svg" required>
+      <button> Post </button>
+    </div>
+  </form>
+</dialog>

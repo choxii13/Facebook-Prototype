@@ -1,13 +1,19 @@
-const Facebook = require("../model/facebook-model");
+const PostImage = require("../model/post-image-model");
+const User = require("../model/user-model");
 const { leftSection, days, months, years } = require("../util/data");
 const { sessionDefaultValue } = require("../util/validation-session");
 
+function facebook(req, res) {
+  res.redirect("/facebook");
+}
 async function getFacebook(req, res) {
   if (res.locals.isAuth) {
-    const postDetails = await Facebook.postDetails();
-    postDetails.reverse();
-    res.render("facebook", {
+    const postDetails = await PostImage.findAll();
+    const userProfile = await User.userProfile(req.session.uid);
+    console.log(req.session.uid);
+    res.render("./facebook/main-facebook", {
       postDetails: postDetails,
+      userProfile: userProfile,
       leftSection,
     });
     return;
@@ -30,7 +36,7 @@ async function getFacebook(req, res) {
     signUpData = sessionDefaultValue(req);
   }
 
-  res.render("facebook", {
+  res.render("./login-facebook/facebook", {
     date: { days, months, years },
     inputData: signUpData,
     success: success,
@@ -39,4 +45,4 @@ async function getFacebook(req, res) {
   });
 }
 
-module.exports = getFacebook;
+module.exports = { facebook: facebook, getFacebook: getFacebook };

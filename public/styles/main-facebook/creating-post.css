@@ -92,3 +92,14 @@
   width: 100%;
   object-fit: contain;
 }
+
+#change-image-preview {
+  display: none;
+}
+
+#change-image-preview {
+  margin: auto;
+  height: 15rem;
+  width: 100%;
+  object-fit: contain;
+}

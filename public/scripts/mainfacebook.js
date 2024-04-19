@@ -37,6 +37,22 @@ function showPreview() {
 
 filePickerElement.addEventListener("change", showPreview);
 
+// file image preview
+const changefilePickerElement = document.getElementById("change-image");
+const changeImagePreview = document.getElementById("change-image-preview");
+
+function showPreviewChange() {
+  const files = changefilePickerElement.files;
+  if (!files || files.length === 0) {
+    return;
+  }
+  const pickedFile = files[0];
+  changeImagePreview.style.display = "block";
+  changeImagePreview.src = URL.createObjectURL(pickedFile);
+}
+
+changefilePickerElement.addEventListener("change", showPreviewChange);
+
 const openOptionElement = document.querySelector(
   ".right-section-container:last-child img"
 );
@@ -104,4 +120,28 @@ for (let i = 0; i < buttonElement.length; i++) {
 const removeElement = document.querySelector(
   ".story ul li:nth-child(1) img:nth-child(1)"
 );
-console.log((removeElement.style.display = "none"));
+removeElement.style.display = "none";
+
+// seeMore
+const seeMoreElement = document.querySelector(
+  ".section-left-container:nth-child(7)"
+);
+const elements = document.querySelectorAll(
+  ".section-left-container:nth-child(n + 8)"
+);
+
+seeMoreElement.addEventListener("click", () => {
+  for (let i = 0; i < elements.length; i++) {
+    console.log(i);
+    elements[i].style.display = "flex";
+  }
+  seeMoreElement.style.display = "none";
+});
+
+elements[elements.length - 1].addEventListener("click", () => {
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].style.display = "none";
+  }
+  seeMoreElement.style.display = "flex";
+  elements[elements.length - 1].style.display = "none";
+});

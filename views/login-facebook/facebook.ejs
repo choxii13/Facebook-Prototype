@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<head>
+  <%- include("../shared/includes/head")%>
+</head>
+
+<body>
+  <%- include('includes/dialog-sign-up') %>
+  <% if(success){ %>
+  <%- include('includes/dialog-modal-success') %>
+  <% }%>
+  <%- include('includes/dialog-change-password') %>
+  <section>
+    <div class="facebook">
+      <img src="/images/facebook.svg" />
+      <p>Connect with friends and the world around you on Facebook.</p>
+
+    </div>
+    <div className="log-in">
+      <form action="/facebook/login" method="POST" class="form-sign-in login-js">
+        <input type="hidden" name="_csrf" value="<%=locals.csrfToken%>">
+        <input type="email" placeholder="Email or Phone Number" id="login-email" name="email" class="design" value="<%=loginFacebook.email.value%>" required />
+        <input type="password" placeholder="Password" id="user-password" name="password" class="design" value="<%=loginFacebook.password.value%>" required />
+        <% if(loginFacebook.hasError) { %>
+        <p class="active" id="login-error">
+          <%=loginFacebook.email.message %>
+        </p>
+        <%} %>
+        <button>Login </button>
+        <span id="forgot-password">Forgot password?</span>
+        <hr />
+        <button type="button" id="create-account">Create new Account </button>
+      </form>
+    </div>
+  </section>
+
+</body>
+
+</html>

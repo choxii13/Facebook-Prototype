@@ -1,103 +1,117 @@
-const bcrypt = require("bcryptjs");
-const Facebook = require("../model/facebook-model");
 const { saveToSession } = require("../util/validation-session");
-const { Validation, passwordFormatFn } = require("../util/validation-class");
+const sessionAuth = require("../util/session-auth");
+const User = require("../model/user-model");
+const validation = require("../util/validation");
 
-async function postLogin(req, res) {
-  const { email, password } = req.body;
-  const existingUser = await Facebook.findUser({ email: email });
-  let passwordIsMatch;
+async function signup(req, res) {
+  const user = new User(req.body);
+  const alreadyExists = await user.alreadyExists();
+  console.log(alreadyExists);
+  const errrorMessage = validation.signup(req.body, alreadyExists);
 
-  if (existingUser) {
-    passwordIsMatch = await bcrypt.compare(password, existingUser.password);
+  if (Object.keys(errrorMessage).length !== 0) {
+    req.session.signUpData = {
+      hasError: true,
+      firstName: {
+        value: req.body.firstName,
+        message: errrorMessage.firstName,
+      },
+      lastName: {
+        value: req.body.lastName,
+        message: errrorMessage.lastName,
+      },
+      email: {
+        value: req.body.email,
+        message: errrorMessage.email,
+      },
+      password: {
+        value: req.body.password,
+        message: errrorMessage.password,
+      },
+      confirmPassword: {
+        value: req.body.confirmPassword,
+        message: errrorMessage.confirmPassword,
+      },
+      gender: {
+        value: req.body.gender,
+        message: errrorMessage.gender,
+      },
+    };
+
+    saveToSession(req, res, "/facebook");
+    return;
   }
 
-  const error = Validation.logIn(passwordIsMatch, existingUser);
+  await user.save();
+  req.session.success = "Sign Up Successfully";
+  saveToSession(req, res, "/facebook");
+}
+
+async function changePassword(req, res) {
+  const user = new User(req.body);
+  const alreadyExists = await user.alreadyExists();
+  const errrorMessage = validation.changePassword(req.body, alreadyExists); // validation message/ errors
+
+  if (Object.keys(errrorMessage).length !== 0) {
+    req.session.changePasswordData = {
+      hasError: true,
+      email: {
+        value: req.body.email,
+        message: errrorMessage.email,
+      },
+      password: {
+        value: req.body.password,
+        message: errrorMessage.password,
+      },
+      confirmPassword: {
+        value: req.body.confirmPassword,
+        message: errrorMessage.confirmPassword,
+      },
+    };
+    saveToSession(req, res, "/facebook");
+    return;
+  }
+
+  await user.save();
+  req.session.success = "Change Password Successfully";
+  sessionAuth.sessionAuth(req, res, "/facebook");
+}
+
+async function login(req, res) {
+  const user = new User(req.body);
+  const existingUser = await user.getUserWithSameEmail();
+  let passwordIsMatch;
+  if (existingUser) {
+    passwordIsMatch = await user.hasMatchingPassword(existingUser.password);
+  }
+
+  const error = validation.login(passwordIsMatch, existingUser);
 
   if (error) {
     req.session.loginFacebook = {
       hasError: true,
       email: {
-        value: email,
+        value: req.body.email,
         message: error,
       },
       password: {
-        value: password,
+        value: req.body.password,
         message: null,
       },
     };
     saveToSession(req, res, "/facebook");
     return;
   }
-  req.session.user = email; // need to be changed// need an id
-  req.session.isAuthenticated = true;
-  saveToSession(req, res, "/facebook");
+  sessionAuth.sessionAuth(req, res, existingUser, "/facebook");
 }
 
-async function postSignUp(req, res) {
-  const { firstName, lastName, gender, email, password, confirmPassword } =
-    req.body;
-  const passwordFormat = passwordFormatFn(password);
-  const existingUser = await Facebook.findUser({ email: email });
-
-  const value = new Validation(
-    firstName,
-    lastName,
-    password,
-    confirmPassword,
-    gender,
-    existingUser,
-    email,
-    passwordFormat
-  );
-  value.SignUp();
-
-  if (Object.keys(value.message).length !== 0) {
-    req.session.signUpData = {
-      hasError: true,
-      firstName: {
-        value: value.firstName,
-        message: value.message.firstName,
-      },
-      lastName: {
-        value: value.lastName,
-        message: value.message.lastName,
-      },
-      email: {
-        value: value.email,
-        message: value.message.email,
-      },
-      password: {
-        value: value.password,
-        message: value.message.password,
-      },
-      confirmPassword: {
-        value: value.confirmPassword,
-        message: value.message.confirmPassword,
-      },
-      gender: {
-        value: value.gender,
-        message: value.message.gender,
-      },
-    };
-    saveToSession(req, res, "/facebook");
-    return;
-  } else {
-    const hashedPassword = await bcrypt.hash(password, 12);
-    const { confirmPassword, ...newReqBody } = req.body;
-    await Facebook.insertData("users", {
-      ...newReqBody,
-      password: hashedPassword,
-      imagePath: "styles/main-facebook/images/no-profile.png",
-    });
-    req.session.success = "Sign Up Successfully";
-    saveToSession(req, res, "/facebook");
-  }
+function logout(req, res) {
+  sessionAuth.removeAuth(req, res, "/facebook");
 }
 
-function postLogOut(req, res) {
-  req.session.user = null;
-  req.session.isAuthenticated = false;
-  res.redirect("/facebook");
-}
-module.exports = { postSignUp, postLogin, postLogOut };
+module.exports = {
+  login: login,
+  signup: signup,
+  logout: logout,
+  changePassword: changePassword,
+};

@@ -16,7 +16,8 @@
   border-radius: 30px;
 }
 
-.section-left-container {
+.section-left-container,
+.edit-container {
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -33,13 +34,19 @@
   gap: 10px;
 }
 
-.section-left-container:hover {
+.section-left-container:hover,
+.edit-container:hover {
   background-color: rgba(194, 187, 187, 0.2);
   cursor: pointer;
   border-radius: 5px;
 }
-.section-left-container img {
+.section-left-container img,
+.edit-container img {
   height: 2.2rem;
   width: 2.2rem;
   object-fit: contain;
+}
+
+.section-left-container:nth-child(n + 8) {
+  display: none;
 }

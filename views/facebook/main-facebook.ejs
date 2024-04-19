@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<head>
+  <%- include("../shared/includes/head")%>
+</head>
+
+<body>
+  <%- include('includes/header')%>
+  <%- include('includes/post-modal')%>
+  <%- include('includes/change-profile' )%>
+  <main>
+    <%if(userProfile) { %>
+    <%- include('includes/left-section', {userProfile}) %>
+    <% } %>
+
+    <div class="posts-container">
+      <%- include('includes/story') %>
+      <%- include('includes/posting') %>
+      <% for(const postDetail of postDetails) { %>
+      <%- include('includes/post-detail', { postDetail }) %>
+      <% } %>
+    </div>
+    <%- include('includes/right-section') %>
+  </main>
+</body>
+
+</html>
